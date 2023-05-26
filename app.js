@@ -3,8 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const mongoose = require("mongoose");
-require("dotenv").config();
+const mongoose = require('mongoose');
+require('dotenv').config();
+const User = require("./models/users");
+const Comment = require("./models/comments")
 
 const mongoDB = `mongodb+srv://${process.env.USER_ID}:${process.env.USER_PASSWORD}@cluster0.ifu8n0w.mongodb.net/?retryWrites=true&w=majority`;
 
@@ -12,7 +14,7 @@ main().catch((err) => console.log(err));
 
 async function main() {
   console.log("Connecting to DB...")
-  await mongoose.connect(mongoDB)
+  await mongoose.connect(mongoDB, {dbName: "members-only"})
   console.log("Successfully connected to DB!")
 };
 
@@ -49,6 +51,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 module.exports = app;
