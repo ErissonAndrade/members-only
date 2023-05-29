@@ -10,15 +10,15 @@ const UsersSchema = new Schema({
     password: { type: String, require: true }
 });
 
-UsersSchema.pre('save', async function(next) {
-    if(this.isModified('password') || this.isNew) {
+UsersSchema.pre('save', async function (next) {
+    if (this.isModified('password') || this.isNew) {
         try {
             const salt = await bcrypt.genSalt(10);
             const hashedPassword = await bcrypt.hash(this.password, salt);
             this.password = hashedPassword;
             next();
         }
-        catch(err) {
+        catch (err) {
             next(err);
         }
     }

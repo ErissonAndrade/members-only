@@ -1,5 +1,7 @@
 extends layout
 
 block content
+  if(currentUser)
+    div Welcome Back #{currentUser.first_name} #{currentUser.last_name}!
   h1= title
   p Welcome to #{title}

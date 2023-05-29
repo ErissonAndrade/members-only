@@ -1,11 +1,11 @@
 const User = require("../models/users");
+const passport = require("passport");
 
 exports.signUp_get = (req, res, next) => {
     try {
         res.render('signUp_form')
-        next();
     }
-    catch(err) {
+    catch (err) {
         next(err);
     }
 };
@@ -20,29 +20,25 @@ exports.signUp_post = async (req, res, next) => {
         });
         await newUser.save();
         res.redirect("/")
-        next();
     }
-    catch(err) {
+    catch (err) {
         next(err);
     }
 };
 
 exports.signIn_get = (req, res, next) => {
     try {
-        res.render('signIn_form')
-        next();
+        return res.render('signIn_form')
     }
-    catch(err) {
+    catch (err) {
         next(err);
     }
 };
 
-exports.signIn_post = (req, res, next) => {
-    try {
+exports.signIn_post = passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/sign-in"
+})
 
-        next();
-    }
-    catch(err) {
-        next(err);
-    }
-}
+
+
