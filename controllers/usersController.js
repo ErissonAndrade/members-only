@@ -19,7 +19,7 @@ exports.signUp_post = async (req, res, next) => {
             password: req.body.password,
         });
         await newUser.save();
-        res.redirect("/")
+        res.redirect('/')
     }
     catch (err) {
         next(err);
@@ -28,17 +28,21 @@ exports.signUp_post = async (req, res, next) => {
 
 exports.signIn_get = (req, res, next) => {
     try {
-        return res.render('signIn_form')
+        const messages = req.session.messages
+        console.log(messages)
+        return res.render('signIn_form', {message: messages})
     }
     catch (err) {
         next(err);
     }
 };
 
-exports.signIn_post = passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/sign-in"
-})
+exports.signIn_post = passport.authenticate('local', { 
+    failureRedirect: '/sign-in', 
+    failureMessage: true, 
+    successRedirect: '/' 
+});
+
 
 
 
