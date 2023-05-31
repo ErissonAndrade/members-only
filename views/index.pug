@@ -1,7 +1,27 @@
 extends layout
 
 block content
+  h1=title
   if(currentUser)
     div Welcome Back #{currentUser.first_name} #{currentUser.last_name}!
-  h1= title
-  p Welcome to #{title}
+  else
+    p Leave your message too!
+  if(comments)
+    each comment in comments
+      ul
+        li
+          h2=comment.title
+          h3=comment.user.username
+          h4=comment.date
+          p=comment.message
+  if(currentUser)
+    a(href=currentUser.url)
+      button Add a comment
+  else
+    p You must sign in to leave a comment!  
+    a(href="/sign-in") 
+      button Sign in
+    p Don't have an account? 
+    a(href="/sign-up") 
+      button Sign up
+       

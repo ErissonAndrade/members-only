@@ -7,7 +7,8 @@ const UsersSchema = new Schema({
     first_name: { type: String, required: true },
     last_name: { type: String, required: true },
     username: { type: String, required: true, maxLength: '15' },
-    password: { type: String, require: true }
+    password: { type: String, required: true },
+    member_status: { type: String, required: true }
 });
 
 UsersSchema.pre('save', async function (next) {
@@ -23,5 +24,9 @@ UsersSchema.pre('save', async function (next) {
         }
     }
 });
+
+UsersSchema.virtual("url").get(function () {
+    return `${this.id}/add-comment`
+})
 
 module.exports = mongoose.model("Users", UsersSchema);

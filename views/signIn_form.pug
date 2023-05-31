@@ -1,12 +1,18 @@
 extends layout
 
 block content
-    h2 Sign In
-    form(action="", method="POST")
-        label(for="username") Username
-        input(type="text" name="username" id="username")
-        label(for="password") Password
-        input(type="password" name="password" id="password")
-        button(type="submit") Submit
-    if(message)
-        p=message[message.length - 1]
+    if(currentUser)
+        p You are already signed in #{currentUser.first_name} #{currentUser.last_name}!
+        p Wanna sign out?
+        a(href="sign-out")
+            button Sign out
+    else
+        h2 Sign In
+        form(action="", method="POST")
+            label(for="username") Username
+            input(type="text" name="username" id="username")
+            label(for="password") Password
+            input(type="password" name="password" id="password")
+            button(type="submit") Submit
+        if(message)
+            p=message[message.length - 1]

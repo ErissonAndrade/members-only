@@ -1,7 +1,7 @@
 const User = require("../models/users");
 const passport = require("passport");
 
-exports.signUp_get = (req, res, next) => {
+exports.signUp_get = async (req, res, next) => {
     try {
         res.render('signUp_form')
     }
@@ -17,6 +17,7 @@ exports.signUp_post = async (req, res, next) => {
             last_name: req.body.lastName,
             username: req.body.username,
             password: req.body.password,
+            member_status: 'standard'
         });
         await newUser.save();
         res.redirect('/')
@@ -29,18 +30,17 @@ exports.signUp_post = async (req, res, next) => {
 exports.signIn_get = (req, res, next) => {
     try {
         const messages = req.session.messages
-        console.log(messages)
-        return res.render('signIn_form', {message: messages})
+        return res.render('signIn_form', { message: messages })
     }
     catch (err) {
         next(err);
     }
 };
 
-exports.signIn_post = passport.authenticate('local', { 
-    failureRedirect: '/sign-in', 
-    failureMessage: true, 
-    successRedirect: '/' 
+exports.signIn_post = passport.authenticate('local', {
+    failureRedirect: '/sign-in',
+    failureMessage: true,
+    successRedirect: '/'
 });
 
 

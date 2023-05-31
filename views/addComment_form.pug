@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h2 Add your comment!
+    form(action="" method="POST")
+        label(for="title") Message Title
+        input(type="text" id="title" name="title")
+        label(for="comment") Leave your message here!
+        textarea(id="comment" name="comment")
+        button(type="submit") Submit
