@@ -19,4 +19,6 @@ router.post('/sign-in', userController.signIn_post);
 router.get('/:id/add-comment', commentsController.addComment_get);
 router.post('/:id/add-comment', commentsController.addComment_post);
 
+router.get('/sign-out', userController.signOut_get);
+
 module.exports = router;

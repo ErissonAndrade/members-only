@@ -3,5 +3,22 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet", href="/static/css/bootstrap.min.css")
   body
-    block content
+    div.container-fluid
+      div.row 
+        div.col-sm-2.bg-dark.text-left
+          block sidebar
+            ul.sidebar
+              li
+                a(href='/forums/cats' class="no-decoration") Cats Forum
+              li
+                a(href='/forums/dogs' class="no-decoration") Dogs Forum  
+              li
+                a(href='/forums/lizards' class="no-decoration") Lizards Forum
+              li
+                a(href='/forums/snakes' class="no-decoration") Snakes Forum
+        div.col-sm-10.bg-secondary
+          block content
+    
+  

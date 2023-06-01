@@ -4,7 +4,7 @@ block content
     if(currentUser)
         p You are already signed in #{currentUser.first_name} #{currentUser.last_name}!
         p Wanna sign out?
-        a(href="sign-out")
+        a(href="/sign-out")
             button Sign out
     else
         h2 Sign In
