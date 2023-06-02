@@ -1,13 +1,19 @@
 doctype html
 html
   head
-    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(http-equiv="X-UA-Compatible" content="ie=edge")
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel="stylesheet", href="/static/css/bootstrap.min.css")
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Geologica&display=swap" rel="stylesheet")
+    title=title
   body
     div.container-fluid
       div.row 
-        div.col-sm-2.bg-dark.text-left
+        div.col-sm-2.bg-dark.text-left.d-flex
           block sidebar
             ul.sidebar
               li

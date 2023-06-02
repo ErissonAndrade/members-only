@@ -1,27 +1,31 @@
 extends layout
 
 block content
-  h1=title
+  h1.text-center=title
   if(currentUser)
     div Welcome Back #{currentUser.first_name} #{currentUser.last_name}!
   else
-    p Leave your message too!
+    h4.text-center Leave your message too!
   if(comments)
     each comment in comments
       ul
-        li
-          h2=comment.title
-          h3=comment.user.username
-          h4=comment.date
-          p=comment.message
+        li.card
+          div.card-header
+            div.card-title=comment.title
+            div.card-subtitle=comment.user.username
+            div.card-subtitle=comment.date
+          p.card-text=comment.message
   if(currentUser)
     a(href=currentUser.url)
       button Add a comment
   else
-    p You must sign in to leave a comment!  
-    a(href="/sign-in") 
-      button.btn.btn-primary Sign in
-    p Don't have an account? 
-    a(href="/sign-up") 
-      button.btn.btn-primary Sign up
+    div.container.text-center.d-flex
+      div
+        p You must sign in to leave a comment!  
+        a(href="/sign-in") 
+        button.btn.btn-primary Sign in
+      div
+        p Don't have an account? 
+        a(href="/sign-up") 
+        button.btn.btn-primary Sign up
        
