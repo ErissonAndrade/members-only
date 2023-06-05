@@ -7,12 +7,13 @@ block content
         a(href="/sign-out")
             button Sign out
     else
-        h2 Sign In
-        form(action="", method="POST")
-            label(for="username") Username
-            input(type="text" name="username" id="username")
-            label(for="password") Password
-            input(type="password" name="password" id="password")
-            button(type="submit") Submit
+        form.d-flex.flex-column.align-items-center(action="", method="POST")
+            div.mx-3.col-sm-3.text-center
+                label(for="username") Username
+                input(type="text" name="username" id="username" class="form-control")
+                label(for="password" class="mt-3") Password
+                input(type="password" name="password" id="password" class="form-control")
+                button(type="submit" class="btn btn-primary mt-3") Submit
         if(message)
-            p=message[message.length - 1]
+            div.mx-3.mt-2.text-center
+                p.text-warning=message[message.length - 1]

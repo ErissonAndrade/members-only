@@ -30,7 +30,7 @@ exports.signUp_post = async (req, res, next) => {
 exports.signIn_get = (req, res, next) => {
     try {
         const messages = req.session.messages
-        return res.render('signIn_form', { message: messages })
+        return res.render('signIn_form', { title:"Sign in", message: messages })
     }
     catch (err) {
         next(err);

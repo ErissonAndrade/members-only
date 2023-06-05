@@ -1,31 +1,30 @@
 extends layout
 
 block content
-  h1.text-center=title
   if(currentUser)
-    div Welcome Back #{currentUser.first_name} #{currentUser.last_name}!
+    div.fs-5 Welcome Back #{currentUser.first_name} #{currentUser.last_name}!
   else
-    h4.text-center Leave your message too!
+    div.fs-3.text-center Leave your message too!
   if(comments)
     each comment in comments
       ul
         li.card
-          div.card-header
-            div.card-title=comment.title
-            div.card-subtitle=comment.user.username
-            div.card-subtitle=comment.date
-          p.card-text=comment.message
+          div.card-header.d-flex.flex-column
+            h2.fs-4.card-title=comment.title
+            h3.fs-6.card-subtitle=comment.user.username
+            div.fs-6.card-subtitle=comment.date
+          p.text-reset.fs-6.card-text.p-2=comment.message
   if(currentUser)
-    a(href=currentUser.url)
-      button Add a comment
+    a.text-center(href=currentUser.url)
+      button.btn.btn-primary Add a comment
   else
-    div.container.text-center.d-flex
+    div.container.text-center.d-flex.justify-content-around
       div
         p You must sign in to leave a comment!  
         a(href="/sign-in") 
-        button.btn.btn-primary Sign in
+          button.btn.btn-primary Sign in
       div
         p Don't have an account? 
         a(href="/sign-up") 
-        button.btn.btn-primary Sign up
+          button.btn.btn-primary Sign up
        

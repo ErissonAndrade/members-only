@@ -13,18 +13,26 @@ html
   body
     div.container-fluid
       div.row 
-        div.col-sm-2.bg-dark.text-left.d-flex
+        div.col-sm-2.bg-dark.p-4
           block sidebar
-            ul.sidebar
+            ul.sidebar.d-flex.flex-column.gap-2
               li
-                a(href='/forums/cats' class="no-decoration") Cats Forum
+                a(href='/' class="text-decoration-none text-reset") Home
               li
-                a(href='/forums/dogs' class="no-decoration") Dogs Forum  
+                a(href='/forums/cats' class="text-decoration-none text-reset") Cats Forum
               li
-                a(href='/forums/lizards' class="no-decoration") Lizards Forum
+                a(href='/forums/dogs' class="text-decoration-none text-reset") Dogs Forum  
               li
-                a(href='/forums/snakes' class="no-decoration") Snakes Forum
-        div.col-sm-10.bg-secondary
+                a(href='/forums/lizards' class="text-decoration-none text-reset") Lizards Forum
+              li
+                a(href='/forums/snakes' class="text-decoration-none text-reset") Snakes Forum
+        div.col-sm-10.bg-secondary.p-2.d-flex.flex-column
+          if(currentUser)
+            div.d-flex.align-items-center
+              div.w-100=currentUser.username 
+              a(href="/sign-out")
+                button.btn.btn-light.btn-sm Sign Out
+          h1.text-center=title
           block content
     
   
