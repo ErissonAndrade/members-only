@@ -2,10 +2,11 @@ extends layout
 
 block content
     if(currentUser)
-        p You are already signed in #{currentUser.first_name} #{currentUser.last_name}!
-        p Wanna sign out?
-        a(href="/sign-out")
-            button Sign out
+        div.text-center
+            p You are already signed in #{currentUser.first_name} #{currentUser.last_name}!
+            p Wanna sign out?
+            a(href="/sign-out")
+                button.btn.btn-danger Sign out
     else
         form.d-flex.flex-column.align-items-center(action="", method="POST")
             div.mx-3.col-sm-3.text-center

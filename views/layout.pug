@@ -12,7 +12,7 @@ html
     title=title
   body
     div.container-fluid
-      div.row 
+      div.row.vh-100
         div.col-sm-2.bg-dark.p-4
           block sidebar
             ul.sidebar.d-flex.flex-column.gap-2
@@ -26,12 +26,11 @@ html
                 a(href='/forums/lizards' class="text-decoration-none text-reset") Lizards Forum
               li
                 a(href='/forums/snakes' class="text-decoration-none text-reset") Snakes Forum
-        div.col-sm-10.bg-secondary.p-2.d-flex.flex-column
+        div.col-sm-10.bg-secondary.p-2.d-flex.flex-column.justify-content-center
           if(currentUser)
             div.d-flex.align-items-center
-              div.w-100=currentUser.username 
-              a(href="/sign-out")
-                button.btn.btn-light.btn-sm Sign Out
+              div.w-50=currentUser.username 
+              a.w-50.text-end(href="/sign-out" class="text-decoration-none text-reset") Sign Out
           h1.text-center=title
           block content
     

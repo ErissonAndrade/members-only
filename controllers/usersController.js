@@ -3,7 +3,7 @@ const passport = require("passport");
 
 exports.signUp_get = async (req, res, next) => {
     try {
-        res.render('signUp_form')
+        res.render('signUp_form', { title: "Sign Up"})
     }
     catch (err) {
         next(err);
