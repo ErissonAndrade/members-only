@@ -44,18 +44,18 @@ passport.use(
       const user = await User.findOne({ username: username });
       if (!user) {
         return done(null, false, { message: "Incorrect username or password" });
-      };
-
+      }
+      
       bcrypt.compare(password, user.password, (err, res) => {
         if (res) {
           return done(null, user)
         } else {
           return done(null, false, { message: "Incorrect username or password" })
         }
-      })
+      });
     } catch (err) {
       return done(err);
-    };
+    }
   })
 );
 

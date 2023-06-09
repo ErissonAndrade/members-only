@@ -4,7 +4,11 @@ li {
 
 * {
   font-family: 'Geologica', sans-serif;
-  color: white
+  color: white;
+}
+
+input {
+  color: black;
 }
 
 

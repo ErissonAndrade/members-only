@@ -12,5 +12,12 @@ block content
             label.mt-3(for="password") Password
             input(type="password" name="password" id="password")
             label.mt-3(for="password") Confirm Password
-            input(type="password" name="password" id="password")
+            input(type="password" name="confirmPassword" id="password")
         button.btn.btn-primary.mt-3(type="submit") Submit
+    if(errors)
+        div.mx-3.mt-2.text-center
+            each error in errors
+                p.text-warning=error.msg
+    if(username)
+        div.mx-3.mt-2.text-center
+            p.text-warning Username already exists please use another name
