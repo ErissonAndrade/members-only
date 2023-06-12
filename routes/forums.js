@@ -2,20 +2,8 @@ var express = require('express');
 var router = express.Router();
 const forumsController = require('../controllers/forumsController')
 
-router.get('/cats', (req, res, next) => {
-  res.render('forums', {title: "Cats Forum"})
-});
+router.get('/:id', forumsController.forums_form_get);
 
-router.get('/dogs', (req, res, next) => {
-  res.render('forums', {title: "Dogs Forum"})
-});
-
-router.get('/lizards', (req, res, next) => {
-  res.render('forums', {title: "Lizards Forum"})
-});
-
-router.get('/snakes', (req, res, next) => {
-  res.render('forums', {title: "Snakes Forum"})
-});
+router.post('/:id', forumsController.forums_form_post);
 
 module.exports = router;

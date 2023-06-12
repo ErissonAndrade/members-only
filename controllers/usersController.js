@@ -36,7 +36,7 @@ exports.signUp_post = [
                     last_name: req.body.lastName,
                     username: req.body.username,
                     password: req.body.password,
-                    member_status: 'standard'
+                    member_status: ['standard']
                 });
                 await newUser.save();
                 res.redirect('/');

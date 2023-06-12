@@ -3,6 +3,7 @@ var router = express.Router();
 const userController = require('../controllers/usersController');
 const commentsController = require('../controllers/commentsController');
 const Comments = require('../models/comments');
+const Forums = require('../models/forums')
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {

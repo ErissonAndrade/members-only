@@ -21,16 +21,11 @@ html
         div.col-sm-2.bg-dark.p-4
           block sidebar
             ul.sidebar.d-flex.flex-column.gap-2
-              li
-                a(href='/' class="text-decoration-none text-reset") Home
-              li
-                a(href='/forums/cats' class="text-decoration-none text-reset") Cats Forum
-              li
-                a(href='/forums/dogs' class="text-decoration-none text-reset") Dogs Forum  
-              li
-                a(href='/forums/lizards' class="text-decoration-none text-reset") Lizards Forum
-              li.mb-5
-                a(href='/forums/snakes' class="text-decoration-none text-reset") Snakes Forum
+              li 
+                a(href="/" class="text-decoration-none text-reset") Home
+              each forum in forums
+                li
+                  a(href=forum.url class="text-decoration-none text-reset") #{forum.name} Forum
             if(!currentUser)
               div.d-flex.justify-content-center.gap-4
                   a.text-decoration-none.text-reset(href='/sign-in') 

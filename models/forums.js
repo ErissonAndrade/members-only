@@ -23,4 +23,8 @@ ForumsSchema.pre('save', async function (next) {
     }
 });
 
+ForumsSchema.virtual("url").get(function() {
+    return `/forums/${this.id}`
+});
+
 module.exports = mongoose.model("Forums", ForumsSchema);

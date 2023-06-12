@@ -10,6 +10,7 @@ const LocalStrategy = require("passport-local");
 const crypto = require("crypto");
 const bcrypt = require('bcrypt');
 const User = require('./models/users');
+const Forums = require('./models/forums')
 require('dotenv').config();
 
 const mongoDB = `mongodb+srv://${process.env.USER_ID}:${process.env.USER_PASSWORD}@cluster0.ifu8n0w.mongodb.net/?retryWrites=true&w=majority`;
@@ -78,10 +79,12 @@ app.use(session({ secret: sessionSecret, resave: false, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(function (req, res, next) {
+app.use(async function (req, res, next) {
+  res.locals.forums = await Forums.find();
   res.locals.currentUser = req.user;
   next();
 });
+
 
 app.use('/', indexRouter);
 app.use('/forums', forumsRouter);

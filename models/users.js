@@ -8,7 +8,7 @@ const UsersSchema = new Schema({
     last_name: { type: String, required: true },
     username: { type: String, required: true, maxLength: '15' },
     password: { type: String, required: true },
-    member_status: { type: String, required: true }
+    member_status: { type: Array, required: true }
 });
 
 UsersSchema.pre('save', async function (next) {
