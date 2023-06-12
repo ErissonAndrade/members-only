@@ -31,11 +31,12 @@ html
                 a(href='/forums/lizards' class="text-decoration-none text-reset") Lizards Forum
               li.mb-5
                 a(href='/forums/snakes' class="text-decoration-none text-reset") Snakes Forum
-            div.d-flex.justify-content-center.gap-4
-                a.text-decoration-none.text-reset(href='/sign-in') 
-                  button.btn.btn-primary Sign In
-                a.text-decoration-none.text-reset(href='/sign-up') 
-                  button.btn.btn-primary Sign Up
+            if(!currentUser)
+              div.d-flex.justify-content-center.gap-4
+                  a.text-decoration-none.text-reset(href='/sign-in') 
+                    button.btn.btn-primary Sign In
+                  a.text-decoration-none.text-reset(href='/sign-up') 
+                    button.btn.btn-primary Sign Up
         div.col-sm-10.bg-secondary.p-2.d-flex.flex-column.justify-content-center
           h1.text-center=title
           block content

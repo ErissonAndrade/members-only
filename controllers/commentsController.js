@@ -3,7 +3,7 @@ const User = require('../models/users');
 
 exports.addComment_get = (req, res, next) => {
     try {
-        res.render("addComment_form");
+        res.render("addComment_form", { title: "Add Comment" });
     } catch (err) {
         next(err);
     }

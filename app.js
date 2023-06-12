@@ -23,7 +23,7 @@ async function main() {
 };
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var forumsRouter = require('./routes/forums');
 
 var app = express();
 
@@ -84,7 +84,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/forums', forumsRouter);
 
 // Bootstrap middleware
 app.use('/static', express.static(path.join(__dirname, 'node_modules/bootstrap/dist')));
