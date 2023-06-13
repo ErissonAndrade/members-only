@@ -21,11 +21,11 @@ html
         div.col-sm-2.bg-dark.p-4
           block sidebar
             ul.sidebar.d-flex.flex-column.gap-2
-              li 
+              li
                 a(href="/" class="text-decoration-none text-reset") Home
               each forum in forums
                 li
-                  a(href=forum.url class="text-decoration-none text-reset") #{forum.name} Forum
+                  a(href=forum.url class="text-decoration-none text-reset")=forum.fullName
             if(!currentUser)
               div.d-flex.justify-content-center.gap-4
                   a.text-decoration-none.text-reset(href='/sign-in') 

@@ -7,8 +7,8 @@ const Forums = require('../models/forums')
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
-  const comments = await Comments.find().populate("user");
-  res.render('index', { title: 'Members Only App', comments: comments });
+  const homeForum = await Forums.findOne({name: "Home"}).populate("comments").populate("user");
+  res.render('index', { title: 'Members Only App', comments: homeForum.comments });
 });
 
 router.get('/sign-up', userController.signUp_get);
@@ -18,7 +18,7 @@ router.get('/sign-in', userController.signIn_get);
 router.post('/sign-in', userController.signIn_post);
 
 router.get('/:id/add-comment', commentsController.addComment_get);
-router.post('/:id/add-comment', commentsController.addComment_post);
+router.post('/:id/add-comment', commentsController.addComment_home_post);
 
 router.get('/sign-out', userController.signOut_get);
 

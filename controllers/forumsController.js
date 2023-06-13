@@ -12,13 +12,17 @@ exports.forums_form_post = [
 
     async (req, res, next) => {
         try {
-            const forum = await Forums.findById(req.params.id);
+            const forum = await Forums.findById(req.params.id).populate("comments");
             bcrypt.compare(req.body.password, forum.password, (err, result) => {
                 if (err) {
                     console.error(err)
                     return
                 }
                 if (result) {
+                    User.findByIdAndUpdate(res.locals.currentUser.id, {
+                        $addToSet: {member_status: forum.name}
+                    });
+
                     return res.render("forums", {title: `${forum.name} Forum`})
                 }
                 else {

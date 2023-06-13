@@ -2,7 +2,7 @@ extends layout
 
 block content
   if(currentUser)
-    div.fs-5 Welcome Back #{currentUser.first_name} #{currentUser.last_name}!
+    div.fs-5.text-center Welcome Back #{currentUser.first_name} #{currentUser.last_name}!
   else
     div.fs-3.text-center Leave your message too!
   if(comments)

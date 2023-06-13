@@ -27,4 +27,8 @@ ForumsSchema.virtual("url").get(function() {
     return `/forums/${this.id}`
 });
 
+ForumsSchema.virtual("fullName").get(function() {
+    return `${this.name} Forum`
+});
+
 module.exports = mongoose.model("Forums", ForumsSchema);

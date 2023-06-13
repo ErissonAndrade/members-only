@@ -80,7 +80,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(async function (req, res, next) {
-  res.locals.forums = await Forums.find();
+  res.locals.forums = await Forums.find({ name: { $ne: "Home" } });
   res.locals.currentUser = req.user;
   next();
 });
