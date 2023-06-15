@@ -37,6 +37,7 @@ async function createForum(name, password) {
   await forum.save();
 };
 
+createForum("Home", process.env.HOME_FORUM_PASSWORD);
 createForum("Cats", process.env.CATS_FORUM_PASSWORD);
 createForum("Dogs", process.env.DOGS_FORUM_PASSWORD);
 createForum("Lizards", process.env.LIZARDS_FORUM_PASSWORD);

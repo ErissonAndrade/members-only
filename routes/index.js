@@ -7,8 +7,8 @@ const Forums = require('../models/forums')
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
-  const homeForum = await Forums.findOne({name: "Home"}).populate("comments").populate("user");
-  res.render('index', { title: 'Members Only App', comments: homeForum.comments });
+  const homeForum = await Forums.findOne({name: "Home"}).populate({ path: "comments", populate: { path:"user" } });
+  res.render('index', { title: 'Members Only App', comments: homeForum.comments});
 });
 
 router.get('/sign-up', userController.signUp_get);

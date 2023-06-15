@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const ForumsSchema = new Schema({
     name: { type: String, required: true },
-    comments: { type: Schema.Types.ObjectId, ref: "Comments"},
+    comments: [{ type: Schema.Types.ObjectId, ref: "Comments"}],
     password: { type: String, required: true }
 });
 
@@ -29,6 +29,10 @@ ForumsSchema.virtual("url").get(function() {
 
 ForumsSchema.virtual("fullName").get(function() {
     return `${this.name} Forum`
+});
+
+ForumsSchema.virtual("add_comment_url").get(function() {
+    return `/forums/${this.id}/add-comment`
 });
 
 module.exports = mongoose.model("Forums", ForumsSchema);

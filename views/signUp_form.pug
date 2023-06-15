@@ -1,23 +1,25 @@
 extends layout
 
 block content
-    form.d-flex.flex-column.align-items-center(method="POST", action="")
-        div.d-flex.flex-column.text-center
-            label(for="firstName") Name
-            input(type="text" name="firstName" id="firstName")
-            label.mt-3(for="lastName") Last Name
-            input(type="text" name="lastName" id="lastName")
-            label.mt-3(for="username") Username
-            input(type="text" name="username" id="username")
-            label.mt-3(for="password") Password
-            input(type="password" name="password" id="password")
-            label.mt-3(for="password") Confirm Password
-            input(type="password" name="confirmPassword" id="password")
-        button.btn.btn-primary.mt-3(type="submit") Submit
-    if(errors)
-        div.mx-3.mt-2.text-center
-            each error in errors
-                p.text-warning=error.msg
-    if(username)
-        div.mx-3.mt-2.text-center
-            p.text-warning Username already exists please use another name
+    div.d-flex.flex-column.flex-grow-1.justify-content-center
+        h1.text-center=title
+        form.d-flex.flex-column.align-items-center(method="POST", action="")
+            div.d-flex.flex-column.text-center
+                label(for="firstName") Name
+                input(type="text" name="firstName" id="firstName")
+                label.mt-3(for="lastName") Last Name
+                input(type="text" name="lastName" id="lastName")
+                label.mt-3(for="username") Username
+                input(type="text" name="username" id="username")
+                label.mt-3(for="password") Password
+                input(type="password" name="password" id="password")
+                label.mt-3(for="password") Confirm Password
+                input(type="password" name="confirmPassword" id="password")
+            button.btn.btn-primary.mt-3(type="submit") Submit
+        if(errors)
+            div.mx-3.mt-2.text-center
+                each error in errors
+                    p.text-warning=error.msg
+        if(username)
+            div.mx-3.mt-2.text-center
+                p.text-warning Username already exists please use another name

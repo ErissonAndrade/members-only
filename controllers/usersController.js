@@ -1,4 +1,5 @@
 const User = require('../models/users');
+const Forum = require('../models/forums');
 const passport = require('passport');
 const { body, validationResult } = require('express-validator');
 
@@ -25,6 +26,7 @@ exports.signUp_post = [
         try {
             const errors = validationResult(req);
             const username = await User.find({ username: req.body.username });
+            const homeForum = await Forum.findOne({name: "Home"});
 
             if (!errors.isEmpty()) {
                 return res.render('signUp_form', { title: "Sign up", errors: errors.array() });
@@ -36,7 +38,7 @@ exports.signUp_post = [
                     last_name: req.body.lastName,
                     username: req.body.username,
                     password: req.body.password,
-                    member_status: ['standard']
+                    forum_member: [homeForum._id] 
                 });
                 await newUser.save();
                 res.redirect('/');

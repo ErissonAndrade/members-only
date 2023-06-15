@@ -1,6 +1,7 @@
 extends layout
 
 block content
+    h1.text-center=title
     if(comments) 
         each comment in comments
             ul
@@ -10,11 +11,9 @@ block content
                     h3.fs-6.card-subtitle=comment.user.username
                     div.fs-6.card-subtitle=comment.date
                 p.text-reset.fs-6.card-text.p-2=comment.message
-            a.text-center(href=currentUser.url)
-                button.btn.btn-primary Add a comment
     if(currentUser)
         div.text-center No Comments yet! Be the First!
-        a.text-center(href=currentUser.url)
+        a.text-center(href=forumAddComment)
             button.btn.btn-primary Add a comment
     else 
         div.text-warning.text-center You must be signed in to view this page
