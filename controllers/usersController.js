@@ -38,7 +38,8 @@ exports.signUp_post = [
                     last_name: req.body.lastName,
                     username: req.body.username,
                     password: req.body.password,
-                    forum_member: [homeForum._id] 
+                    forum_member: [homeForum._id],
+                    isAdmin: false
                 });
                 await newUser.save();
                 res.redirect('/');

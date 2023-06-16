@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    div.d-flex.flex-column.flex-grow-1.justify-content-center
+        h1.text-center=title
+        form.d-flex.flex-column.align-items-center(method="POST", action="")
+            div.d-flex.gap-5
+                button.btn.btn-primary.mt-3.fs-5(type="submit") Yes
+                a(href=lastPage) 
+                    button.btn.btn-primary.mt-3.fs-5 No

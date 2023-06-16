@@ -8,7 +8,8 @@ const UsersSchema = new Schema({
     last_name: { type: String, required: true },
     username: { type: String, required: true, maxLength: '15' },
     password: { type: String, required: true },
-    forum_member: [{ type: Schema.Types.ObjectId, required: true }]
+    forum_member: [{ type: Schema.Types.ObjectId, required: true }],
+    isAdmin: {type: Boolean},
 });
 
 UsersSchema.pre('save', async function (next) {

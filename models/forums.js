@@ -35,4 +35,9 @@ ForumsSchema.virtual("add_comment_url").get(function() {
     return `/forums/${this.id}/add-comment`
 });
 
+ForumsSchema.virtual("remove_comment_url").get(function() {
+    return `/forums/${this.id}/remove-comment`
+});
+
+
 module.exports = mongoose.model("Forums", ForumsSchema);

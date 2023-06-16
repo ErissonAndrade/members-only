@@ -25,7 +25,6 @@ exports.addComment_forums_post = async (req, res, next) => {
     });
 
     const forum = await Forum.findById(req.params.id);
-    console.log(forum)
     res.redirect(forum.url);
 };
 
@@ -39,9 +38,26 @@ exports.addComment_home_post = async(req, res, next) => {
 
     newComment.save();
 
-    await Forum.findOneAndUpdate({ name: "Home" }, {
+    await Forum.findOneAndUpdate({ name: 'Home' }, {
         $push: {comments: newComment._id}
     });
 
     res.redirect("/")
+};
+
+exports.removeComment_get = async(req, res , next) => {
+    return res.render('removeComment_form', {
+        title: 'Are you sure you want to delete this comment?', 
+        lastPage: req.header("referer")
+    });
+};
+
+exports.removeComment_post = async(req, res , next) => {
+    try {
+        await Comment.findByIdAndRemove(req.params.id);
+        res.redirect(req.header("referer"));
+    }
+    catch(err) {
+        next(err)
+    }
 };

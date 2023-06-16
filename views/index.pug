@@ -9,10 +9,14 @@ block content
     each comment in comments
       ul
         li.card
-          div.card-header.d-flex.flex-column
-            h2.fs-4.card-title=comment.title
-            h3.fs-6.card-subtitle=comment.user.username
-            div.fs-6.card-subtitle=comment.date_formatted
+          div.card-header.d-flex
+            div.text-reset
+              h2.fs-4.card-title=comment.title
+              h3.fs-6.card-subtitle=comment.user.username
+              div.fs-6.card-subtitle=comment.date_formatted
+            if(currentUser && currentUser.isAdmin === true)
+              div.flex-grow-1.text-end
+                a.text-decoration-none.fs-6(href="") Remove Comment
           p.text-reset.fs-6.card-text.p-2=comment.message
   else
     div.fs-4 No comments yet, be the first!
