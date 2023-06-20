@@ -1,10 +1,18 @@
 extends layout
 
 block content
-    form.text-center(action="" method="POST")
-        div.d-flex.flex-column.align-items-center
-            label(for="title") Message Title
-            input.w-50(type="text" id="title" name="title")
-            label(for="comment") Leave your message here!
-            textarea.w-50(id="comment" name="comment")
-        button.btn.btn-primary(type="submit") Submit
+    if(currentUser)
+        h1.text-center=title
+        form.text-center(action="" method="POST")
+            div.d-flex.flex-column.align-items-center
+                label(for="title") Message Title
+                input.w-50(type="text" id="title" name="title")
+                label(for="comment") Leave your message here!
+                textarea.w-50(id="comment" name="comment")
+            button.btn.btn-primary.mt-3(type="submit") Submit
+        if(errors)
+            div.mx-3.mt-2.text-center
+                each error in errors
+                    p.text-warning=error.msg
+    else
+        div.fs-3 Please log in to add a comment!

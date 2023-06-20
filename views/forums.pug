@@ -13,7 +13,7 @@ block content
                             div.fs-6.card-subtitle=comment.date_formatted
                         if(currentUser && currentUser.isAdmin === true)
                             div.flex-grow-1.text-end
-                                a.text-decoration-none.fs-6(href="") Remove Comment
+                                a.text-decoration-none.fs-6(href=comment.remove_comment) Remove Comment
                     p.text-reset.fs-6.card-text.p-2=comment.message
     if(currentUser)
         a.text-center(href=currentForum.add_comment_url)
